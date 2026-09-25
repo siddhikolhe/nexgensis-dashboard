@@ -1,0 +1,10 @@
+Choices I made:
+- When a search term is active, I ignore the category filter and disable it in the UI, since DummyJSON can't search and filter by category in one request.
+- Sorting is done client-side on whatever page comes back from the API, instead of relying on its sortBy/order params, because those aren't reliably supported across the /search and /category endpoints.
+- Since DummyJSON's add/edit/delete don't actually persist anything server-side, I added a small localStorage layer (src/lib/localOverrides.js) that merges local changes on top of API responses, so the app behaves correctly after a refresh.
+
+Problem I faced and how I fixed it:
+Next.js's App Router throws a build error if useSearchParams() is used without a <Suspense> boundary. My product list page depends on the URL for page/search/filter/sort state, so I split it into an outer component wrapped in <Suspense> and an inner component that reads the params.
+
+Where AI helped:
+I used AI to scaffold the project structure and get tricky logic right on the first pass - especially the URL-state syncing, the debounce, and the request-cancellation logic that stops an old, slow response from overwriting a newer one. I reviewed, tested, and can walk through every file line by line.
