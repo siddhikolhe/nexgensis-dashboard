@@ -97,6 +97,9 @@ export default function ProductForm({ initialValues, categories, onSubmit, submi
       </div>
 
       {field("thumbnail", "Thumbnail URL")}
+      <p className="-mt-3 text-xs text-gray-400">
+        Leave blank to show a placeholder image.
+      </p>
 
       <div>
         <label className="mb-1 block text-sm font-medium text-gray-700">Description</label>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { PLACEHOLDER_IMAGE } from "@/lib/placeholder";
 
 export default function ProductCardList({ products, onDelete }) {
   return (
@@ -8,7 +9,7 @@ export default function ProductCardList({ products, onDelete }) {
       {products.map((p) => (
         <div key={p.id} className="flex gap-3 rounded-lg border p-3">
           <img
-            src={p.thumbnail}
+            src={p.thumbnail || PLACEHOLDER_IMAGE}
             alt={p.title}
             className="h-16 w-16 rounded object-cover"
           />

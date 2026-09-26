@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import api from "@/lib/axios";
 import { applyOverridesToOne, deleteLocalProduct, findLocalProduct } from "@/lib/localOverrides";
+import { PLACEHOLDER_IMAGE } from "@/lib/placeholder";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import AppShell from "@/components/AppShell";
 import Loader from "@/components/Loader";
@@ -125,14 +126,14 @@ export default function ProductDetailsPage() {
                             i === activeImage ? "border-sky-500" : "border-transparent"
                           }`}
                         >
-                          <img src={src} alt="" className="h-full w-full object-cover" />
+                          <img src={src || PLACEHOLDER_IMAGE} alt="" className="h-full w-full object-cover" />
                         </button>
                       ))}
                     </div>
                   )}
                   <div className="aspect-square flex-1 overflow-hidden rounded-lg bg-gray-50">
                     <img
-                      src={gallery[activeImage] || product.thumbnail}
+                      src={gallery[activeImage] || product.thumbnail || PLACEHOLDER_IMAGE}
                       alt={product.title}
                       className="h-full w-full object-cover"
                     />

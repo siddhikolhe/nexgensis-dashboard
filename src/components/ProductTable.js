@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { PLACEHOLDER_IMAGE } from "@/lib/placeholder";
 
 export default function ProductTable({ products, onDelete }) {
   return (
@@ -24,7 +25,7 @@ export default function ProductTable({ products, onDelete }) {
                   unpredictable CDN, so next/image's domain allowlist +
                   optimizer isn't worth the friction here */}
               <img
-                src={p.thumbnail}
+                src={p.thumbnail || PLACEHOLDER_IMAGE}
                 alt={p.title}
                 className="h-10 w-10 rounded object-cover"
               />
